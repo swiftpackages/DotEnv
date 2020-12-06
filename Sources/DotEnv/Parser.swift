@@ -75,7 +75,7 @@ internal struct ByteArrayParser: Parser {
         guard let keyLength = self.countDistance(to: .equal) else {
             return nil
         }
-        guard let key = String(bytes: self.source[self.readerIndex..<(self.readerIndex + keyLength)],
+        guard let key = String(bytes: self.reader(length: keyLength)!,
                                encoding: self.encoding) else {
             return nil
         }
@@ -94,7 +94,7 @@ internal struct ByteArrayParser: Parser {
             valueLength = self.source.count
         }
         guard let valueBytes = (self.readerIndex + valueLength) < self.source.count
-                ? self.source[self.readerIndex..<(self.readerIndex + valueLength)]
+                ? self.reader(length: valueLength)!
                 : nil
         else {
             return nil
@@ -170,6 +170,14 @@ internal struct ByteArrayParser: Parser {
         return distance - 1
     }
 
+    private mutating func reader(length: Int) -> ArraySlice<UInt8>? {
+        guard self.readerIndex + length < self.source.count else {
+            return nil
+        }
+        let out = self.source[self.readerIndex...(self.readerIndex + length)]
+        self.readerIndex += length + 1
+        return out
+    }
 }
 
 internal struct StringParser: Parser {

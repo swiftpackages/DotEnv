@@ -2,6 +2,52 @@ import XCTest
 @testable import DotEnv
 
 final class DotEnvTests: XCTestCase {
+    let testString = """
+        NODE_ENV=development
+        #NODE_ENV_2=production
+        BASIC=basic
+        AFTER_LINE=after_line
+        UNDEFINED_EXPAND=$TOTALLY_UNDEFINED_ENV_KEY
+        EMPTY=
+        SINGLE_QUOTES=single_quotes
+        DOUBLE_QUOTES=double_quotes
+        EXPAND_NEWLINES=expand\nnewlines
+        DONT_EXPAND_NEWLINES_1=dontexpand\\nnewlines
+        DONT_EXPAND_NEWLINES_2=dontexpand\\nnewlines
+        EQUAL_SIGNS=equals==
+        RETAIN_INNER_QUOTES={"foo": "bar"}
+        RETAIN_INNER_QUOTES_AS_STRING={"foo": "bar"}
+        INCLUDE_SPACE=some spaced out string
+        USERNAME=therealnerdybeast@example.tld
+    """
+    let testStringValues: [(key: String, value: String)] = [
+        (key: "NODE_ENV", value: "development"),
+        (key: "BASIC", value: "basic"),
+        (key: "AFTER_LINE", value: "after_line"),
+        (key: "UNDEFINED_EXPAND", value: "$TOTALLY_UNDEFINED_ENV_KEY"),
+        (key: "EMPTY", value: ""),
+        (key: "SINGLE_QUOTES", value: "single_quotes"),
+        (key: "DOUBLE_QUOTES", value: "double_quotes"),
+        (key: "EXPAND_NEWLINES", value: "expand\nnewlines"),
+        (key: "DONT_EXPAND_NEWLINES_1", value: "dontexpand\\nnewlines"),
+        (key: "DONT_EXPAND_NEWLINES_2", value: "dontexpand\\nnewlines"),
+        (key: "EQUAL_SIGNS", value: "equals=="),
+        (key: "RETAIN_INNER_QUOTES", value: "{\"foo\": \"bar\"}"),
+        (key: "RETAIN_INNER_QUOTES_AS_STRING", value: "{\"foo\": \"bar\"}"),
+        (key: "INCLUDE_SPACE", value: "some spaced out string"),
+        (key: "USERNAME", value: "therealnerdybeast@example.tld"),
+    ]
+
+    func testStringAndByteArrayParser() {
+        var parser = StringParser(source: testString)
+        let lines = parser.parse()
+
+        for (index, line) in lines.enumerated() {
+            XCTAssertEqual(line.key, testStringValues[index].key)
+            XCTAssertEqual(line.value, testStringValues[index].value)
+        }
+    }
+
 //    func testReadFile() throws {
 //        let elg = MultiThreadedEventLoopGroup(numberOfThreads: 1)
 //        let pool = NIOThreadPool(numberOfThreads: 1)
@@ -44,5 +90,7 @@ final class DotEnvTests: XCTestCase {
 //        ])
 //    }
 
-    static var allTests: [String : () -> Void] = [:]
+    static var allTests = [
+        "testStringAndByteArrayParser": testStringAndByteArrayParser,
+    ]
 }
