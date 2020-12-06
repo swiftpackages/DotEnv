@@ -21,21 +21,21 @@ final class DotEnvTests: XCTestCase {
         USERNAME=therealnerdybeast@example.tld
     """
     let testStringValues: [(key: String, value: String)] = [
-        (key: "NODE_ENV", value: "development"),
-        (key: "BASIC", value: "basic"),
-        (key: "AFTER_LINE", value: "after_line"),
-        (key: "UNDEFINED_EXPAND", value: "$TOTALLY_UNDEFINED_ENV_KEY"),
-        (key: "EMPTY", value: ""),
-        (key: "SINGLE_QUOTES", value: "single_quotes"),
-        (key: "DOUBLE_QUOTES", value: "double_quotes"),
-        (key: "EXPAND_NEWLINES", value: "expand\nnewlines"),
-        (key: "DONT_EXPAND_NEWLINES_1", value: "dontexpand\\nnewlines"),
-        (key: "DONT_EXPAND_NEWLINES_2", value: "dontexpand\\nnewlines"),
-        (key: "EQUAL_SIGNS", value: "equals=="),
-        (key: "RETAIN_INNER_QUOTES", value: "{\"foo\": \"bar\"}"),
-        (key: "RETAIN_INNER_QUOTES_AS_STRING", value: "{\"foo\": \"bar\"}"),
-        (key: "INCLUDE_SPACE", value: "some spaced out string"),
-        (key: "USERNAME", value: "therealnerdybeast@example.tld"),
+        (key: "NODE_ENV",                       value: "development"),
+        (key: "BASIC",                          value: "basic"),
+        (key: "AFTER_LINE",                     value: "after_line"),
+        (key: "UNDEFINED_EXPAND",               value: "$TOTALLY_UNDEFINED_ENV_KEY"),
+        (key: "EMPTY",                          value: ""),
+        (key: "SINGLE_QUOTES",                  value: "single_quotes"),
+        (key: "DOUBLE_QUOTES",                  value: "double_quotes"),
+        (key: "EXPAND_NEWLINES",                value: "expand\nnewlines"),
+        (key: "DONT_EXPAND_NEWLINES_1",         value: "dontexpand\\nnewlines"),
+        (key: "DONT_EXPAND_NEWLINES_2",         value: "dontexpand\\nnewlines"),
+        (key: "EQUAL_SIGNS",                    value: "equals=="),
+        (key: "RETAIN_INNER_QUOTES",            value: "{\"foo\": \"bar\"}"),
+        (key: "RETAIN_INNER_QUOTES_AS_STRING",  value: "{\"foo\": \"bar\"}"),
+        (key: "INCLUDE_SPACE",                  value: "some spaced out string"),
+        (key: "USERNAME",                       value: "therealnerdybeast@example.tld"),
     ]
 
     func testStringAndByteArrayParser() {
