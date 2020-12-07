@@ -1,0 +1,21 @@
+name: macOS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Swift
+      uses: fwal/setup-swift@v1.5.0
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
