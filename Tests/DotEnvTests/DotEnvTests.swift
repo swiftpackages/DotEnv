@@ -84,9 +84,9 @@ final class DotEnvTests: XCTestCase {
     }
 
     static var allTests = [
-        "testStringDotEnv": testStringDotEnv,
-        "testReadFile": testReadFile,
-        "testNoTrailingNewlineByteBuffer": testNoTrailingNewlineByteBuffer,
-        "testNoTrailingNewlineString": testNoTrailingNewlineString,
+        ("testStringDotEnv": testStringDotEnv),
+        ("testReadFile": testReadFile),
+        ("testNoTrailingNewlineByteBuffer": testNoTrailingNewlineByteBuffer),
+        ("testNoTrailingNewlineString": testNoTrailingNewlineString),
     ]
 }
