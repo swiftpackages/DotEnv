@@ -26,6 +26,9 @@ let package = Package(
             ]),
         .testTarget(
             name: "DotEnvTests",
-            dependencies: ["DotEnv"]),
+            dependencies: ["DotEnv"],
+            resources: [
+                .copy("Resources")
+            ]),
     ]
 )

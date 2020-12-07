@@ -43,6 +43,7 @@ internal struct ByteArrayParser: Parser {
     }
 
     private mutating func parseNext() -> Line? {
+//        print("called parseNext")
         self.skipSpaces()
         guard let peek = self.peek() else {
             return nil
@@ -72,6 +73,7 @@ internal struct ByteArrayParser: Parser {
     }
 
     private mutating func parseLine() -> Line? {
+//        print("called parseLine")
         guard let keyLength = self.countDistance(to: .equal) else {
             return nil
         }
@@ -80,6 +82,7 @@ internal struct ByteArrayParser: Parser {
             return nil
         }
         self.pop() // =
+//        print("\tgot key: \(key)")
         guard let value = self.parseLineValue() else {
             return nil
         }
@@ -91,12 +94,14 @@ internal struct ByteArrayParser: Parser {
         if let toNewLine = self.countDistance(to: .newLine) {
             valueLength = toNewLine
         } else {
-            valueLength = self.source.count
+            valueLength = self.source.count - self.readerIndex
         }
+//        print("valueLength = \(valueLength)")
         guard let valueBytes = (self.readerIndex + valueLength) < self.source.count
-                ? self.reader(length: valueLength)!
+                ? self.reader(length: valueLength)
                 : nil
         else {
+//            print("reader 0: \(self.reader(length: 0)!)")
             return nil
         }
 
@@ -151,11 +156,11 @@ internal struct ByteArrayParser: Parser {
         var found = false
 
         scan: while let next = index < self.source.count ? self.source[index] : nil {
+            index += 1
             if next == byte {
                 found = true
                 break scan
             }
-            index += 1
         }
 
         guard found else {
@@ -174,8 +179,8 @@ internal struct ByteArrayParser: Parser {
         guard self.readerIndex + length < self.source.count else {
             return nil
         }
-        let out = self.source[self.readerIndex...(self.readerIndex + length)]
-        self.readerIndex += length + 1
+        let out = self.source[self.readerIndex..<(self.readerIndex + length)]
+        self.readerIndex += length
         return out
     }
 }
