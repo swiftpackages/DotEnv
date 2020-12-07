@@ -1,3 +1,6 @@
 theme: fullwidth
 github_url: https://github.com/swiftpackages/DotEnv
 output: ../swiftpackages.github.io/docs/DotEnv
+clean: true
+min_acl: private
+copyright: "&copy; 2020 [Marz Rover](https://github.com/marzvrover) and [swiftpackages](https://github.com/swiftpackages)"
