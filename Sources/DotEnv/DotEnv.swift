@@ -7,8 +7,11 @@
 import Foundation
 import NIO
 
+/// Either provides an EventLoopGroup or indicate to create a new one
 public enum EventLoopGroupSource {
+    /// Provided EventLoopGroup
     case provided(EventLoopGroup)
+    /// Create a EventLoopGroup
     case createNew
 }
 
@@ -26,26 +29,50 @@ public struct Line: CustomStringConvertible, Equatable {
     }
 }
 
+/// An environment variable loader.
+///
+/// You can either read the file and then load it or load in one step.
+///
+///     // read and then load
+///     let path: String
+///     var env = try DotEnv.read(path: path)
+///     env.lines // [Line] (key=value pairs)
+///     env.load()
+///     print(ProcessInfo.processInfo.environment["FOO"]) // BAR
+///
+/// or
+///
+///     // load it
+///     let path: String
+///     var env = try DotEnv.load(path: path)
+///     env.lines // [Line] (key=value pairs)
+///     print(ProcessInfo.processInfo.environment["FOO"]) // BAR
 public struct DotEnv {
-    /// Reads two dotenv files relevant to the environment and loads them into the process.
+    /// Reads two `DotEnv` files relevant to the environment and loads them into the environment.
+    ///
+    /// The `suffix` parameter allows you to read a secondary file.
+    /// This file will be loaded first and file that the `path` parameter points to will be read second.
+    /// By doing this the `path.suffix` environment settings get overwriten any `path` settings.
     ///
     ///     let path: String
-    ///     let elgp: EventLoopGroupSource
+    ///     let suffix: String
+    ///     let elgs: EventLoopGroupSource
     ///     let fileio: NonBlockingFileIO
-    ///     let postfix: String
-    ///     try DotEnvFile.load(path: path, postfix: postfix, on: elgs, fileio: fileio)
-    ///     print(Environment.process.FOO) // BAR
+    ///     try DotEnv.load(path: path, suffix: suffix, on: elgs, fileio: fileio)
+    ///     print(ProcessInfo.processInfo.environment["FOO"]) // BAR
     ///
     /// - parameters:
-    ///     - environment: current environment, selects which .env file to use.
-    ///     - eventLoopGroupProvider: Either provides an EventLoopGroup or tells the function to create a new one.
-    ///     - fileio: NonBlockingFileIO that is used to read the .env file(s).
-    ///     - logger: Optionally provide an existing logger.
+    ///     - path: Path to the file you wish to load (including filename and extension)
+    ///     - suffix: A suffix to add onto the path (for loading a seperate file)
+    ///     - eventLoopGroupSource: Either provides an `EventLoopGroup` or tells the function to create a new one
+    ///     - fileio: `NonBlockingFileIO` that is used to read the .env file(s)
+    ///     - overwrite: Set to false to prevent overwiting current environment variables
     public static func load(
         path: String = ".env",
-        postfix: String,
+        suffix: String,
         on eventLoopGroupSource: EventLoopGroupSource = .createNew,
-        fileio: NonBlockingFileIO
+        fileio: NonBlockingFileIO,
+        overwrite: Bool = true
     ) {
         let eventLoopGroup: EventLoopGroup
 
@@ -69,26 +96,34 @@ public struct DotEnv {
         }
 
         // Load specific .env first since values are not overridden.
-        DotEnv.load(path: "\(path).\(postfix)", on: .provided(eventLoopGroup), fileio: fileio)
-        DotEnv.load(path: path, on: .provided(eventLoopGroup), fileio: fileio)
+        DotEnv.load(path: "\(path).\(suffix)",
+                    on: .provided(eventLoopGroup),
+                    fileio: fileio,
+                    overwrite: overwrite)
+        DotEnv.load(path: path,
+                    on: .provided(eventLoopGroup),
+                    fileio: fileio,
+                    overwrite: overwrite)
     }
 
-    /// Reads the dotenv files relevant to the environment and loads them into the process.
+    /// Reads a `DotEnv` file relevant to the environment and loads them into the environment.
     ///
     ///     let path: String
     ///     let elgs: EventLoopGroupSource
     ///     let fileio: NonBlockingFileIO
-    ///     try DotEnvFile.load(path: path, on: elgs, fileio: filio)
-    ///     print(Environment.process.FOO) // BAR
+    ///     try DotEnv.load(path: path, on: elgs, fileio: fileio)
+    ///     print(ProcessInfo.processInfo.environment["FOO"]) // BAR
     ///
     /// - parameters:
-    ///     - path: Absolute or relative path of the dotenv file.
-    ///     - eventLoopGroupProvider: Either provides an EventLoopGroup or tells the function to create a new one.
-    ///     - fileio: NonBlockingFileIO that is used to read the .env file(s).
+    ///     - path: Path to the file you wish to load (including filename and extension)
+    ///     - eventLoopGroupSource: Either provides an `EventLoopGroup` or tells the function to create a new one.
+    ///     - fileio: `NonBlockingFileIO` that is used to read the .env file(s).
+    ///     - overwrite: Set to false to prevent overwiting current environment variables
     public static func load(
         path: String,
         on eventLoopGroupSource: EventLoopGroupSource = .createNew,
-        fileio: NonBlockingFileIO
+        fileio: NonBlockingFileIO,
+        overwrite: Bool = true
     ) {
         let eventLoopGroup: EventLoopGroup
 
@@ -112,56 +147,60 @@ public struct DotEnv {
         }
 
         do {
-            try load(path: path, fileio: fileio, on: eventLoopGroup.next()).wait()
+            try load(path: path,
+                     fileio: fileio,
+                     on: eventLoopGroup.next(),
+                     overwrite: overwrite).wait()
         } catch {
             // :(
         }
     }
 
-    /// Reads a dotenv file from the supplied path and loads it into the process.
+    /// Reads  `DotEnv` files relevant to the environment and loads them into the environment.
     ///
+    ///     let path: String
+    ///     let el: EventLoop
     ///     let fileio: NonBlockingFileIO
-    ///     let elg: EventLoopGroup
-    ///     try DotEnvFile.load(path: ".env", fileio: fileio, on: elg.next()).wait()
-    ///     print(Environment.process.FOO) // BAR
-    ///
-    /// Use `DotEnvFile.read` to read the file without loading it.
+    ///     try DotEnv.load(path: path, on: el, fileio: fileio)
+    ///     print(ProcessInfo.processInfo.environment["FOO"]) // BAR
     ///
     /// - parameters:
-    ///     - path: Absolute or relative path of the dotenv file.
-    ///     - fileio: File loader.
-    ///     - eventLoop: Eventloop to perform async work on.
-    ///     - overwrite: If `true`, values already existing in the process' env
-    ///                  will be overwritten. Defaults to `false`.
+    ///     - path: Path to the file you wish to load (including filename and extension)
+    ///     - eventLoop: `EventLoop` to perform async work on.
+    ///     - fileio: `NonBlockingFileIO` that is used to read the .env file(s).
+    ///     - overwrite: Set to false to prevent overwiting current environment variables
+    ///     - returns: `EventLoopFuture<Void>`
     public static func load(
         path: String,
         fileio: NonBlockingFileIO,
         on eventLoop: EventLoop,
-        overwrite: Bool = false
+        overwrite: Bool = true
     ) -> EventLoopFuture<Void> {
         return self.read(path: path, fileio: fileio, on: eventLoop)
             .map { $0.load(overwrite: overwrite) }
     }
 
-    /// Reads a dotenv file from the supplied path.
+    /// Reads a DotEnv file from the supplied path.
     ///
+    ///     let path: String
     ///     let fileio: NonBlockingFileIO
     ///     let elg: EventLoopGroup
-    ///     let file = try DotEnvFile.read(path: ".env", fileio: fileio, on: elg.next()).wait()
+    ///     let file = try DotEnv.read(path: path, fileio: fileio, on: elg.next()).wait()
     ///     for line in file.lines {
     ///         print("\(line.key)=\(line.value)")
     ///     }
-    ///     file.load(overwrite: true) // loads all lines into the process
+    ///     file.load() // loads lines into the process
     ///     print(Environment.process.FOO) // BAR
     ///
-    /// Use `DotEnvFile.load` to read and load with one method.
+    /// Use `DotEnv.load` to read and load with one method.
     ///
     /// - parameters:
     ///     - path: Absolute or relative path of the dotenv file.
-    ///     - fileio: File loader.
-    ///     - eventLoop: Eventloop to perform async work on.
+    ///     - fileio: `NonBlockingFileIO`
+    ///     - eventLoop: `EventLoop` to perform async work on.
+    ///     - returns: `EventLoopFuture<DotEnv>`
     public static func read(
-        path: String,
+        path: String = ".env",
         fileio: NonBlockingFileIO,
         on eventLoop: EventLoop
     ) -> EventLoopFuture<DotEnv> {
@@ -178,13 +217,72 @@ public struct DotEnv {
         }
     }
 
-    public static func load(path: String, encoding: String.Encoding = .utf8, overwrite: Bool = true) {
+    /// Reads two `DotEnv` files relevant to the environment and loads them into the environment.
+    ///
+    /// The `suffix` parameter allows you to read a secondary file.
+    /// This file will be loaded first and file that the `path` parameter points to will be read second.
+    /// By doing this the `path.suffix` environment settings get overwriten any `path` settings.
+    ///
+    ///     let path: String
+    ///     let suffix: String
+    ///     let encoding: String.Encoding
+    ///     try DotEnv.load(path: path, suffix: suffix, encoding: Encoding)
+    ///     print(ProcessInfo.processInfo.environment["FOO"]) // BAR
+    ///
+    /// - parameters:
+    ///     - path: Path to the file you wish to load (including filename and extension)
+    ///     - suffix: A suffix to add onto the path (for loading a seperate file)
+    ///     - encoding: The file's encoding
+    ///     - overwrite: Set to false to prevent overwiting current environment variables
+    public static func load(path: String,
+                            suffix: String,
+                            encoding: String.Encoding = .utf8,
+                            overwrite: Bool = true) {
+        load(path: "\(path).\(suffix)",
+             encoding: encoding,
+             overwrite: overwrite)
+        load(path: path,
+             encoding: encoding,
+             overwrite: overwrite)
+    }
+
+    /// Reads a `DotEnv` file relevant to the environment and loads them into the environment.
+    ///
+    ///     let path: String
+    ///     let encoding: String.Encoding
+    ///     try DotEnv.load(path: path, encoding: Encoding)
+    ///     print(ProcessInfo.processInfo.environment["FOO"]) // BAR
+    ///
+    /// - parameters:
+    ///     - path: Path to the file you wish to load (including filename and extension)
+    ///     - encoding: The file's encoding
+    ///     - overwrite: Set to false to prevent overwiting current environment variables
+    public static func load(path: String,
+                            encoding: String.Encoding = .utf8,
+                            overwrite: Bool = true) {
         let file = try! String(contentsOfFile: path, encoding: encoding)
         var parser = StringParser(source: file)
         let dotenv = Self.init(lines: parser.parse())
         dotenv.load(overwrite: overwrite)
     }
 
+    /// Reads a `DotEnv` file from the supplied path.
+    ///
+    ///     let path: String
+    ///     let encoding: String.Encoding
+    ///     let file = try DotEnv.read(path: path, encoding: encoding)
+    ///     for line in file.lines {
+    ///         print("\(line.key)=\(line.value)")
+    ///     }
+    ///     file.load() // loads lines into the process
+    ///     print(Environment.process.FOO) // BAR
+    ///
+    /// Use `DotEnv.load` to read and load with one method.
+    ///
+    /// - parameters:
+    ///     - path: Absolute or relative path of the dotenv file.
+    ///     - encoding: Encoding of the file
+    ///     - returns: `DotEnv`
     public static func read(path: String, encoding: String.Encoding = .utf8) -> DotEnv {
         let file = try! String(contentsOfFile: path, encoding: encoding)
         var parser = StringParser(source: file)
@@ -194,7 +292,7 @@ public struct DotEnv {
     /// All `KEY=VALUE` pairs found in the file.
     public let lines: [Line]
 
-    /// Creates a new DotEnv
+    /// Creates a new `DotEnv`
     init(lines: [Line]) {
         self.lines = lines
     }
@@ -206,28 +304,10 @@ public struct DotEnv {
     ///
     /// - parameters:
     ///     - overwrite: If `true`, values already existing in the process' env
-    ///                  will be overwritten. Defaults to `false`.
-    public func load(overwrite: Bool = false) {
+    ///                  will be overwritten. Defaults to `true`.
+    public func load(overwrite: Bool = true) {
         for line in self.lines {
             setenv(line.key, line.value, overwrite ? 1 : 0)
         }
-    }
-}
-
-internal extension UInt8 {
-    static var newLine: UInt8 {
-        return 0xA
-    }
-
-    static var space: UInt8 {
-        return 0x20
-    }
-
-    static var octothorpe: UInt8 {
-        return 0x23
-    }
-
-    static var equal: UInt8 {
-        return 0x3D
     }
 }

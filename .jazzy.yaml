@@ -1,0 +1,3 @@
+theme: fullwidth
+github_url: https://github.com/swiftpackages/DotEnv
+output: ../swiftpackages.github.io/docs/DotEnv
