@@ -43,7 +43,6 @@ internal struct ByteArrayParser: Parser {
     }
 
     private mutating func parseNext() -> Line? {
-//        print("called parseNext")
         self.skipSpaces()
         guard let peek = self.peek() else {
             return nil
@@ -73,7 +72,6 @@ internal struct ByteArrayParser: Parser {
     }
 
     private mutating func parseLine() -> Line? {
-//        print("called parseLine")
         guard let keyLength = self.countDistance(to: .equal) else {
             return nil
         }
@@ -82,7 +80,6 @@ internal struct ByteArrayParser: Parser {
             return nil
         }
         self.pop() // =
-//        print("\tgot key: \(key)")
         guard let value = self.parseLineValue() else {
             return nil
         }
@@ -96,12 +93,10 @@ internal struct ByteArrayParser: Parser {
         } else {
             valueLength = self.source.count - self.readerIndex
         }
-//        print("valueLength = \(valueLength)")
-        guard let valueBytes = (self.readerIndex + valueLength) < self.source.count
+        guard let valueBytes = (self.readerIndex + valueLength) <= self.source.count
                 ? self.reader(length: valueLength)
                 : nil
         else {
-//            print("reader 0: \(self.reader(length: 0)!)")
             return nil
         }
 
@@ -176,7 +171,7 @@ internal struct ByteArrayParser: Parser {
     }
 
     private mutating func reader(length: Int) -> ArraySlice<UInt8>? {
-        guard self.readerIndex + length < self.source.count else {
+        guard self.readerIndex + length <= self.source.count else {
             return nil
         }
         let out = self.source[self.readerIndex..<(self.readerIndex + length)]
