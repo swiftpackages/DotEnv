@@ -1,5 +1,6 @@
 ![macOS](https://github.com/swiftpackages/DotEnv/workflows/macOS/badge.svg)
 ![ubuntu](https://github.com/swiftpackages/DotEnv/workflows/ubuntu/badge.svg)
+![docs](https://github.com/swiftpackages/DotEnv/workflows/docs/badge.svg)
 
 # DotEnv
 
