@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ByteBufferParser Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/ByteBufferParser" class="dashAnchor"></a>
+
+    <a title="ByteBufferParser Structure Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          DotEnv main Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/swiftpackages/DotEnv">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">DotEnv Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      ByteBufferParser Structure Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/EventLoopGroupSource.html">EventLoopGroupSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UInt8.html">UInt8</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Parser.html">Parser</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ByteArrayParser.html">ByteArrayParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ByteBufferParser.html">ByteBufferParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DotEnv.html">DotEnv</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Line.html">Line</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/StringParser.html">StringParser</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>ByteBufferParser</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">internal</span> <span class="kd">struct</span> <span class="kt">ByteBufferParser</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Parser.html">Parser</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Parse <code>swift-nio</code>&lsquo;s <code>ByteBuffer</code></p>
+
+              <div class="slightly-smaller">
+                <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L241-L371">Show on GitHub</a>
+              </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV6source3NIO0cD0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/source" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV6source3NIO0cD0Vvp">source</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The source <code>ByteBuffer</code> to parse</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">source</span><span class="p">:</span> <span class="kt">ByteBuffer</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L243">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV6sourceAC3NIO0cD0V_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(source:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV6sourceAC3NIO0cD0V_tcfc">init(source:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initalize with source</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="kt">ByteBuffer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>source</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The source to parse</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L247-L249">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV5parseSayAA4LineVGyF"></a>
+                    <a name="//apple_ref/swift/Method/parse()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV5parseSayAA4LineVGyF">parse()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parse the source</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">parse</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Structs/Line.html">Line</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>[Line]</code></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L252-L258">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV9parseNext33_963D34D85008ABCA7BADBB2162B181BFLLAA4LineVSgyF"></a>
+                    <a name="//apple_ref/swift/Method/parseNext()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV9parseNext33_963D34D85008ABCA7BADBB2162B181BFLLAA4LineVSgyF">parseNext()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Determines how to parse the next line</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">parseNext</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Line.html">Line</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>Line?</code></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L261-L281">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV11skipComment33_963D34D85008ABCA7BADBB2162B181BFLLyyF"></a>
+                    <a name="//apple_ref/swift/Method/skipComment()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV11skipComment33_963D34D85008ABCA7BADBB2162B181BFLLyyF">skipComment()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Skip a comment line</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">skipComment</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L283-L288">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV9parseLine33_963D34D85008ABCA7BADBB2162B181BFLLAA0G0VSgyF"></a>
+                    <a name="//apple_ref/swift/Method/parseLine()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV9parseLine33_963D34D85008ABCA7BADBB2162B181BFLLAA0G0VSgyF">parseLine()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parse the line</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">parseLine</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Line.html">Line</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>Line?</code></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L291-L303">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV14parseLineValue33_963D34D85008ABCA7BADBB2162B181BFLLSSSgyF"></a>
+                    <a name="//apple_ref/swift/Method/parseLineValue()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV14parseLineValue33_963D34D85008ABCA7BADBB2162B181BFLLSSSgyF">parseLineValue()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parse the <code>value</code> side of the <code>key=value</code> pair</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">parseLineValue</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>String?</code></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L306-L330">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV10skipSpaces33_963D34D85008ABCA7BADBB2162B181BFLLyyF"></a>
+                    <a name="//apple_ref/swift/Method/skipSpaces()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV10skipSpaces33_963D34D85008ABCA7BADBB2162B181BFLLyyF">skipSpaces()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Skip spaces until another character is found</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">skipSpaces</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L332-L339">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV4peek33_963D34D85008ABCA7BADBB2162B181BFLLs5UInt8VSgyF"></a>
+                    <a name="//apple_ref/swift/Method/peek()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV4peek33_963D34D85008ABCA7BADBB2162B181BFLLs5UInt8VSgyF">peek()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Take a look at the next character to read without moving the <code>ByteBuffer</code>.<code>readerIndex</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">peek</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UInt8</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>UInt8?</code></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L342-L344">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV3pop33_963D34D85008ABCA7BADBB2162B181BFLLyyF"></a>
+                    <a name="//apple_ref/swift/Method/pop()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV3pop33_963D34D85008ABCA7BADBB2162B181BFLLyyF">pop()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Read the next character</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Moves the <code>ByteBuffer</code>.<code>readIndex</code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">pop</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>UInt8?</code></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L348-L350">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6DotEnv16ByteBufferParserV13countDistance33_963D34D85008ABCA7BADBB2162B181BFLL2toSiSgs5UInt8V_tF"></a>
+                    <a name="//apple_ref/swift/Method/countDistance(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv16ByteBufferParserV13countDistance33_963D34D85008ABCA7BADBB2162B181BFLL2toSiSgs5UInt8V_tF">countDistance(to:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Count the distance to the next occurrence of <code>byte</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">countDistance</span><span class="p">(</span><span class="n">to</span> <span class="nv">byte</span><span class="p">:</span> <span class="kt">UInt8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>Int?</code></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L353-L370">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2020 <a class="link" href="https://github.com/marzvrover" target="_blank" rel="external">Marz Rover</a>. All rights reserved. (Last updated: 2020-12-09)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

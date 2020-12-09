@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DotEnv  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="DotEnv  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          DotEnv main Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/swiftpackages/DotEnv">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">DotEnv Reference</a>
+      <img class="carat" src="img/carat.png" />
+      DotEnv  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/EventLoopGroupSource.html">EventLoopGroupSource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/UInt8.html">UInt8</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Parser.html">Parser</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ByteArrayParser.html">ByteArrayParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ByteBufferParser.html">ByteBufferParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DotEnv.html">DotEnv</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Line.html">Line</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/StringParser.html">StringParser</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <p><img src="https://github.com/swiftpackages/DotEnv/workflows/macOS/badge.svg" alt="macOS">
+<img src="https://github.com/swiftpackages/DotEnv/workflows/ubuntu/badge.svg" alt="ubuntu">
+<img src="https://github.com/swiftpackages/DotEnv/workflows/docs/badge.svg" alt="docs"></p>
+<h1 id='dotenv' class='heading'>DotEnv</h1>
+
+<p>A swift DotEnv file loader inspired by <a href="https://github.com/vlucas/phpdotenv">vlucas/phpdotenv</a>.
+This swift package enables you to quickly and easily use a <code>.env</code> file in your swift project today.
+Using <a href="https://github.com/apple/swift-nio">SwiftNIO</a> in project?
+Don&rsquo;t worry, you can use <code>NonBlockingFileIO</code> to ensure everything runs smoothly.</p>
+<h2 id='getting-started' class='heading'>Getting Started</h2>
+
+<p>You can easily add as a requirement with <a href="https://swift.org/package-manager/">SwiftPM</a>.</p>
+<h3 id='know-what-you-39-re-doing' class='heading'>Know what you&rsquo;re doing?</h3>
+
+<p>Here are some quick copypastas for you</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/swiftpackages/DotEnv.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0"</span><span class="p">),</span>
+</code></pre>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">product</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"DotEnv"</span><span class="p">,</span> <span class="nv">package</span><span class="p">:</span> <span class="s">"DotEnv"</span><span class="p">),</span>
+</code></pre>
+<h3 id='need-a-reminder' class='heading'>Need a reminder?</h3>
+
+<p>Your <code>Package.swift</code> file should look something like this</p>
+
+<p><code>Package.swift</code></p>
+<pre class="highlight swift"><code><span class="c1">// swift-tools-version:5.3</span>
+
+<span class="kd">import</span> <span class="kt">PackageDescription</span>
+
+<span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
+    <span class="nv">name</span><span class="p">:</span> <span class="s">"SuperCoolProject"</span><span class="p">,</span>
+    <span class="nv">products</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="nf">library</span><span class="p">(</span>
+            <span class="nv">name</span><span class="p">:</span> <span class="s">"SuperCoolProject"</span><span class="p">,</span>
+            <span class="nv">targets</span><span class="p">:</span> <span class="p">[</span><span class="s">"SuperCoolProject"</span><span class="p">]),</span>
+    <span class="p">],</span>
+    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/swiftpackages/DotEnv.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0"</span><span class="p">),</span>
+    <span class="p">],</span>
+    <span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="nf">target</span><span class="p">(</span>
+            <span class="nv">name</span><span class="p">:</span> <span class="s">"SuperCoolProject"</span><span class="p">,</span>
+            <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+                <span class="o">.</span><span class="nf">product</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"DotEnv"</span><span class="p">,</span> <span class="nv">package</span><span class="p">:</span> <span class="s">"DotEnv"</span><span class="p">),</span>
+            <span class="p">]),</span>
+        <span class="o">.</span><span class="nf">testTarget</span><span class="p">(</span>
+            <span class="nv">name</span><span class="p">:</span> <span class="s">"SuperCoolProject"</span><span class="p">,</span>
+            <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"SuperCoolProject"</span><span class="p">])</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='without-swiftnio' class='heading'>Without SwiftNIO</h3>
+
+<p>Read and then load</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="s">"path/to/your/.env"</span>
+<span class="k">var</span> <span class="nv">env</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">DotEnv</span><span class="o">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="n">path</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">lines</span> <span class="c1">// [Line] (key=value pairs)</span>
+<span class="n">env</span><span class="o">.</span><span class="nf">load</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="kt">ProcessInfo</span><span class="o">.</span><span class="n">processInfo</span><span class="o">.</span><span class="n">environment</span><span class="p">[</span><span class="s">"FOO"</span><span class="p">])</span> <span class="c1">// BAR</span>
+</code></pre>
+
+<p>or</p>
+
+<p>Just load</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="s">"path/to/your/.env"</span>
+<span class="k">var</span> <span class="nv">env</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">DotEnv</span><span class="o">.</span><span class="nf">load</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="n">path</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">lines</span> <span class="c1">// [Line] (key=value pairs)</span>
+<span class="nf">print</span><span class="p">(</span><span class="kt">ProcessInfo</span><span class="o">.</span><span class="n">processInfo</span><span class="o">.</span><span class="n">environment</span><span class="p">[</span><span class="s">"FOO"</span><span class="p">])</span> <span class="c1">// BAR</span>
+</code></pre>
+
+<p>Do you have two <code>.env</code> files you wish to load? You can do that without breaking a sweat.
+By using a <code>load</code> method with a <code>suffix</code> parameter you can easily load your shared <code>.env.development</code> file, and then overwrite anything you need to with your local <code>.env</code> file.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">path</span> <span class="o">=</span> <span class="s">"path/to/your/.env"</span>
+<span class="k">let</span> <span class="nv">suffix</span> <span class="o">=</span> <span class="s">"development"</span>
+<span class="k">try</span> <span class="kt">DotEnv</span><span class="o">.</span><span class="nf">load</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="nv">suffix</span><span class="p">:</span> <span class="n">suffix</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="kt">ProcessInfo</span><span class="o">.</span><span class="n">processInfo</span><span class="o">.</span><span class="n">environment</span><span class="p">[</span><span class="s">"FOO"</span><span class="p">])</span> <span class="c1">// BAR</span>
+</code></pre>
+<h3 id='with-swiftnio' class='heading'>With SwiftNIO</h3>
+
+<p>Read and then load</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">elg</span> <span class="o">=</span> <span class="kt">MultiThreadedEventLoopGroup</span><span class="p">(</span><span class="nv">numberOfThreads</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">pool</span> <span class="o">=</span> <span class="kt">NIOThreadPool</span><span class="p">(</span><span class="nv">numberOfThreads</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pool</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">fileio</span> <span class="o">=</span> <span class="kt">NonBlockingFileIO</span><span class="p">(</span><span class="nv">threadPool</span><span class="p">:</span> <span class="n">pool</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">env</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">DotEnv</span><span class="o">.</span><span class="nf">read</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="n">filePath</span><span class="p">,</span> <span class="nv">fileio</span><span class="p">:</span> <span class="n">fileio</span><span class="p">,</span> <span class="nv">on</span><span class="p">:</span> <span class="n">elg</span><span class="o">.</span><span class="nf">next</span><span class="p">())</span><span class="o">.</span><span class="nf">wait</span><span class="p">()</span>
+<span class="n">env</span><span class="o">.</span><span class="nf">load</span><span class="p">(</span><span class="nv">overwrite</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="kt">ProcessInfo</span><span class="o">.</span><span class="n">processInfo</span><span class="o">.</span><span class="n">environment</span><span class="p">[</span><span class="s">"FOO"</span><span class="p">])</span> <span class="c1">// BAR</span>
+
+<span class="k">try</span> <span class="n">pool</span><span class="o">.</span><span class="nf">syncShutdownGracefully</span><span class="p">()</span>
+<span class="k">try</span> <span class="n">elg</span><span class="o">.</span><span class="nf">syncShutdownGracefully</span><span class="p">()</span>
+</code></pre>
+
+<p>or</p>
+
+<p>Just load</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">elg</span> <span class="o">=</span> <span class="kt">MultiThreadedEventLoopGroup</span><span class="p">(</span><span class="nv">numberOfThreads</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">pool</span> <span class="o">=</span> <span class="kt">NIOThreadPool</span><span class="p">(</span><span class="nv">numberOfThreads</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pool</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">fileio</span> <span class="o">=</span> <span class="kt">NonBlockingFileIO</span><span class="p">(</span><span class="nv">threadPool</span><span class="p">:</span> <span class="n">pool</span><span class="p">)</span>
+
+<span class="kt">DotEnv</span><span class="o">.</span><span class="nf">load</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="n">filePath</span><span class="p">,</span> <span class="nv">fileio</span><span class="p">:</span> <span class="n">fileio</span><span class="p">,</span> <span class="nv">on</span><span class="p">:</span> <span class="n">elg</span><span class="o">.</span><span class="nf">next</span><span class="p">())</span><span class="o">.</span><span class="nf">wait</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="kt">ProcessInfo</span><span class="o">.</span><span class="n">processInfo</span><span class="o">.</span><span class="n">environment</span><span class="p">[</span><span class="s">"FOO"</span><span class="p">])</span> <span class="c1">// BAR</span>
+
+<span class="k">try</span> <span class="n">pool</span><span class="o">.</span><span class="nf">syncShutdownGracefully</span><span class="p">()</span>
+<span class="k">try</span> <span class="n">elg</span><span class="o">.</span><span class="nf">syncShutdownGracefully</span><span class="p">()</span>
+</code></pre>
+<h3 id='additional-documentation' class='heading'>Additional Documentation</h3>
+
+<p><a href="https://swiftpackages.github.io/DotEnv">You can find the full documentation on the documentation website.</a></p>
+<h2 id='credits' class='heading'>Credits</h2>
+
+<p>A signficant portion of this project comes from <a href="https://github.com/vapor/vapor">vapor/vapor</a> under <a href="https://github.com/vapor/vapor/blob/4.36.0/LICENSE">The MIT License</a>.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2020 <a class="link" href="https://github.com/marzvrover" target="_blank" rel="external">Marz Rover</a>. All rights reserved. (Last updated: 2020-12-09)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
