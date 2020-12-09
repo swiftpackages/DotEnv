@@ -1,8 +1,0 @@
-theme: fullwidth
-github_url: https://github.com/swiftpackages/DotEnv
-output: ../swiftpackages.github.io/docs/DotEnv
-clean: true
-min_acl: private
-author: Marz Rover
-author_url: https://github.com/marzvrover
-module: DotEnv 
