@@ -18,4 +18,4 @@ jobs:
       uses: swiftpackages/publish-jazzy-docs@v2.0.0
       with:
         args: --module_version ${{ steps.get_tag.outputs.tag }} --github_file_prefix https://github.com/swiftpackages/DotEnv/tree/${{ steps.get_tag.outputs.tag }} --output docs/${{ steps.get_tag.outputs.tag }}
-        personal_access_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        personal_access_token: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
