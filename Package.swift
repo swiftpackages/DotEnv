@@ -22,7 +22,7 @@ let package = Package(
             name: "DotEnvTests",
             dependencies: ["DotEnv"],
             resources: [
-                .copy("Resources")
+                .copy("Resources"),
             ]),
     ]
 )

@@ -206,8 +206,7 @@ public struct DotEnv {
     ) -> EventLoopFuture<DotEnv> {
         return fileio.openFile(path: path, eventLoop: eventLoop).flatMap { arg -> EventLoopFuture<ByteBuffer> in
             return fileio.read(fileRegion: arg.1, allocator: .init(), eventLoop: eventLoop)
-                .flatMapThrowing
-            { buffer in
+                .flatMapThrowing { buffer in
                 try arg.0.close()
                 return buffer
             }
