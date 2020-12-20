@@ -1,6 +1,7 @@
 ![macOS](https://github.com/swiftpackages/DotEnv/workflows/macOS/badge.svg)
 ![ubuntu](https://github.com/swiftpackages/DotEnv/workflows/ubuntu/badge.svg)
 ![docs](https://github.com/swiftpackages/DotEnv/workflows/docs/badge.svg)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/62bd74e03ac2400ab647f3898b421b3e)](https://www.codacy.com/gh/swiftpackages/DotEnv/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=swiftpackages/DotEnv&amp;utm_campaign=Badge_Grade)
 
 # DotEnv
 
