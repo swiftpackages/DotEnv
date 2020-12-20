@@ -4,6 +4,8 @@
 
 # DotEnv
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c1fc4325179c4e28a0359a21a6b0274a)](https://app.codacy.com/gh/swiftpackages/DotEnv?utm_source=github.com&utm_medium=referral&utm_content=swiftpackages/DotEnv&utm_campaign=Badge_Grade)
+
 A swift DotEnv file loader inspired by [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv).
 This swift package enables you to quickly and easily use a `.env` file in your swift project today.
 Using [SwiftNIO](https://github.com/apple/swift-nio) in project?
