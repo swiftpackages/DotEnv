@@ -1,7 +1,7 @@
 import XCTest
 import NIO
 @testable import DotEnv
-
+// swiftlint:disable all
 final class DotEnvTests: XCTestCase {
     func testByteArrayParser() {
         var parser = ByteArrayParser(source: testBytes)
@@ -24,7 +24,7 @@ final class DotEnvTests: XCTestCase {
     }
 
     func testStringDotEnv() {
-        let env = DotEnv.read(path: filePath)
+        let env = try! DotEnv.read(path: filePath)
         env.load(overwrite: true)
         for line in testValues {
             XCTAssertEqual(ProcessInfo.processInfo.environment[line.key], line.value )
@@ -102,8 +102,9 @@ final class DotEnvTests: XCTestCase {
 
     static var allTests = [
         ("testByteArrayParser", testByteArrayParser),
-        ("testStringDotEnv", testStringDotEnv),
+        ("testStringParser", testStringParser),
         ("testByteBufferParser", testByteBufferParser),
+        ("testStringDotEnv", testStringDotEnv),
         ("testByteBufferDotEnv", testByteBufferDotEnv),
         ("testNoTrailingNewlineByteBuffer", testNoTrailingNewlineByteBuffer),
         ("testNoTrailingNewlineString", testNoTrailingNewlineString),

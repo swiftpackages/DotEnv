@@ -7,6 +7,10 @@
 import Foundation
 import NIO
 
+public enum DotEnvError: Error {
+    case fileCouldNotBeRead(String, String.Encoding)
+}
+
 /// Either provides an EventLoopGroup or indicate to create a new one
 public enum EventLoopGroupSource {
     /// Provided EventLoopGroup
@@ -14,7 +18,6 @@ public enum EventLoopGroupSource {
     /// Create a EventLoopGroup
     case createNew
 }
-
 /// Represents a `KEY=VALUE` pair in a dotenv file.
 public struct Line: CustomStringConvertible, Equatable {
     /// The key.
@@ -28,7 +31,6 @@ public struct Line: CustomStringConvertible, Equatable {
         return "\(self.key)=\(self.value)"
     }
 }
-
 /// An environment variable loader.
 ///
 /// You can either read the file and then load it or load in one step.
@@ -236,11 +238,11 @@ public struct DotEnv {
     public static func load(path: String,
                             suffix: String,
                             encoding: String.Encoding = .utf8,
-                            overwrite: Bool = true) {
-        load(path: "\(path).\(suffix)",
+                            overwrite: Bool = true) throws {
+        try load(path: "\(path).\(suffix)",
              encoding: encoding,
              overwrite: overwrite)
-        load(path: path,
+        try load(path: path,
              encoding: encoding,
              overwrite: overwrite)
     }
@@ -258,11 +260,15 @@ public struct DotEnv {
     ///     - overwrite: Set to false to prevent overwiting current environment variables
     public static func load(path: String,
                             encoding: String.Encoding = .utf8,
-                            overwrite: Bool = true) {
-        let file = try! String(contentsOfFile: path, encoding: encoding)
-        var parser = StringParser(source: file)
-        let dotenv = Self.init(lines: parser.parse())
-        dotenv.load(overwrite: overwrite)
+                            overwrite: Bool = true) throws {
+        do {
+            let file = try String(contentsOfFile: path, encoding: encoding)
+            var parser = StringParser(source: file)
+            let dotenv = Self.init(lines: parser.parse())
+            dotenv.load(overwrite: overwrite)
+        } catch {
+            throw DotEnvError.fileCouldNotBeRead(path, encoding)
+        }
     }
 
     /// Reads a `DotEnv` file from the supplied path.
@@ -282,10 +288,14 @@ public struct DotEnv {
     ///     - path: Absolute or relative path of the dotenv file.
     ///     - encoding: Encoding of the file
     ///     - returns: `DotEnv`
-    public static func read(path: String, encoding: String.Encoding = .utf8) -> DotEnv {
-        let file = try! String(contentsOfFile: path, encoding: encoding)
-        var parser = StringParser(source: file)
-        return .init(lines: parser.parse())
+    public static func read(path: String, encoding: String.Encoding = .utf8) throws -> DotEnv {
+        do {
+            let file = try String(contentsOfFile: path, encoding: encoding)
+            var parser = StringParser(source: file)
+            return .init(lines: parser.parse())
+        } catch {
+            throw DotEnvError.fileCouldNotBeRead(path, encoding)
+        }
     }
 
     /// All `KEY=VALUE` pairs found in the file.

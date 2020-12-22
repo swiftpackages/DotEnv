@@ -33,14 +33,14 @@ internal extension UInt8 {
 internal protocol Parser {
     /// Enables adopters to define their own source type
     /// e.g. `String`, `[UInt8]`, etc.
-    associatedtype sourceType
+    associatedtype SourceType
     /// Enables adopters to define their own input source type
     /// e.g. `String`, `[UInt8]`, etc.
-    associatedtype initSourceType
+    associatedtype InitSourceType
     /// The raw source to parse
-    var source: sourceType { get set }
+    var source: SourceType { get set }
     /// Initializer accepting source
-    init(source: initSourceType)
+    init(source: InitSourceType)
     /// Parse the source
     mutating func parse() -> [Line]
 }
