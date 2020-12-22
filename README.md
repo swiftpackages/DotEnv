@@ -19,7 +19,7 @@ You can easily add as a requirement with [SwiftPM](https://swift.org/package-man
 Here are some quick copypastas for you
 
 ```swift
-.package(url: "https://github.com/swiftpackages/DotEnv.git", from: "1.0.0"),
+.package(url: "https://github.com/swiftpackages/DotEnv.git", from: "2.0.0"),
 ```
 ```swift
 .product(name: "DotEnv", package: "DotEnv"),
@@ -43,7 +43,7 @@ let package = Package(
             targets: ["SuperCoolProject"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swiftpackages/DotEnv.git", from: "1.0.0"),
+        .package(url: "https://github.com/swiftpackages/DotEnv.git", from: "2.0.0"),
     ],
     targets: [
         .target(
