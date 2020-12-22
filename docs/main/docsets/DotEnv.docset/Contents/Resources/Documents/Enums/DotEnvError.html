@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>StringParser Structure Reference</title>
+    <title>DotEnvError Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Struct/StringParser" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/DotEnvError" class="dashAnchor"></a>
 
-    <a title="StringParser Structure Reference"></a>
+    <a title="DotEnvError Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">DotEnv Reference</a>
       <img class="carat" src="../img/carat.png" />
-      StringParser Structure Reference
+      DotEnvError Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -103,18 +103,18 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>StringParser</h1>
+            <h1>DotEnvError</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">internal</span> <span class="kd">struct</span> <span class="kt">StringParser</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Parser.html">Parser</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">DotEnvError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
 
                 </div>
               </div>
-            <p>String parser wrapper around <code><a href="../Structs/ByteArrayParser.html">ByteArrayParser</a></code></p>
+            <p>Undocumented</p>
 
               <div class="slightly-smaller">
-                <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L227-L239">Show on GitHub</a>
+                <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/DotEnv.swift#L10-L12">Show on GitHub</a>
               </div>
           </div>
         </section>
@@ -126,9 +126,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6DotEnv12StringParserV6sourceAA09ByteArrayD0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/source" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6DotEnv12StringParserV6sourceAA09ByteArrayD0Vvp">source</a>
+                    <a name="/s:6DotEnv0aB5ErrorO18fileCouldNotBeReadyACSS_SS10FoundationE8EncodingVtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/fileCouldNotBeRead(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6DotEnv0aB5ErrorO18fileCouldNotBeReadyACSS_SS10FoundationE8EncodingVtcACmF">fileCouldNotBeRead(_:<wbr>_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -136,83 +136,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The <code><a href="../Structs/ByteArrayParser.html">ByteArrayParser</a></code> we are wrapping</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">source</span><span class="p">:</span> <span class="kt"><a href="../Structs/ByteArrayParser.html">ByteArrayParser</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">fileCouldNotBeRead</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L229">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6DotEnv12StringParserV6sourceACSS_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(source:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6DotEnv12StringParserV6sourceACSS_tcfc">init(source:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Intialize with source <code>String</code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L231-L233">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6DotEnv12StringParserV5parseSayAA4LineVGyF"></a>
-                    <a name="//apple_ref/swift/Method/parse()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6DotEnv12StringParserV5parseSayAA4LineVGyF">parse()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Parse using our <code><a href="../Structs/ByteArrayParser.html">ByteArrayParser</a></code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">parse</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Structs/Line.html">Line</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p><code>[Line]</code></p>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/Parser.swift#L236-L238">Show on GitHub</a>
+                        <a href="https://github.com/swiftpackages/DotEnv/tree/main/Sources/DotEnv/DotEnv.swift#L">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
