@@ -1,5 +1,5 @@
 <div align="center">
-    <img src=".github/resources/logo.svg" width="90%" alt="DotEnv for Swift" />
+    <img src="https://raw.githubusercontent.com/swiftpackages/DotEnv/main/.github/resources/logo.svg" width="90%" alt="DotEnv for Swift" />
 </div>
 <br />
 
