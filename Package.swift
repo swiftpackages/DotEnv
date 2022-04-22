@@ -10,7 +10,7 @@ let package = Package(
             targets: ["DotEnv"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", from: "2.29.0"),
+        .package(url: "https://github.com/apple/swift-nio.git", "2.23.0"..."2.39.0"),
     ],
     targets: [
         .target(
