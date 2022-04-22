@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+    types: [opened, reopened]
+  schedule:
+    - cron: '0 0 1,15 * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,7 +18,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup Swift
-      uses: fwal/setup-swift@v1.5.0
+      uses: fwal/setup-swift@v1.14.0
+      with:
+        swift-version: "5.1"
     - name: Build
       run: swift build -v
     - name: Run tests
